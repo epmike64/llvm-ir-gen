@@ -1,6 +1,6 @@
 package com.fint.tools.llvmir
 
-enum Type:
+enum FType:
   // PrimitiveTypes
   case HalfTyID  ///< 16-bit floating point type
   case BFloatTyID  ///< 16-bit floating point type (7-bit significand)

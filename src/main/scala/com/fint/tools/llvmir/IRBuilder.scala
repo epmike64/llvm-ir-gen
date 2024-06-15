@@ -14,5 +14,5 @@ trait IRBuilder(val llvmContext: LLVMContext) {
   def createFCmpNE(lhs: Value, rhs: Value, name: String = ""): Value
   def createFCmpOLT(lhs: Value, rhs: Value, name: String = ""): Value
   def createFCmpOLE(lhs: Value, rhs: Value, name: String = ""): Value
-  def CreateUIToFP(value: Value, destType: Type, name: String = ""): Value
+  def CreateUIToFP(value: Value, destType: FType, name: String = ""): Value
 }

@@ -1,4 +1,4 @@
 package com.fint.tools.llvmir
 
-class Instruction(val typeID: Type) extends User(typeID) {
+class Instruction(val ftype: FType) extends User(ftype) {
 }
