@@ -1,5 +1,6 @@
 package com.fint.tools.llvmir
 
+
 enum TermOps(val opcode: Int) {
   case Ret extends TermOps(1)
   case Br extends TermOps(2)
@@ -87,5 +88,85 @@ enum OtherOps(val opcode: Int) {
   case LandingPad extends OtherOps(66)
 }
 
-class Instruction(val ftype: FType) extends Value(ftype) {
+enum OpsClass(val opcode: Int) {
+  case TerminatorOps extends OpsClass(1)
+  case UnaryOps extends OpsClass(2)
+  case BinaryOps extends OpsClass(3)
+  case MemoryOps extends OpsClass(4)
+  case CastOps extends OpsClass(5)
+  case FuncletPadOps extends OpsClass(6)
+  case OtherOps extends OpsClass(7)
+}
+
+enum Ops(val opcode: Int, opsClass: OpsClass) {
+  case Ret extends Ops(1, OpsClass.TerminatorOps)
+  case Br extends Ops(2, OpsClass.TerminatorOps)
+  case Switch extends Ops(3, OpsClass.TerminatorOps)
+  case IndirectBr extends Ops(4, OpsClass.TerminatorOps)
+  case Invoke extends Ops(5, OpsClass.TerminatorOps)
+  case Resume extends Ops(6, OpsClass.TerminatorOps)
+  case Unreachable extends Ops(7, OpsClass.TerminatorOps)
+  case CleanupRet extends Ops(8, OpsClass.TerminatorOps)
+  case CatchRet extends Ops(9, OpsClass.TerminatorOps)
+  case CatchSwitch extends Ops(10, OpsClass.TerminatorOps)
+  case CallBr extends Ops(11, OpsClass.TerminatorOps)
+  case FNeg extends Ops(12, OpsClass.UnaryOps)
+  case Add extends Ops(13, OpsClass.BinaryOps)
+  case FAdd extends Ops(14, OpsClass.BinaryOps)
+  case Sub extends Ops(15, OpsClass.BinaryOps)
+  case FSub extends Ops(16, OpsClass.BinaryOps)
+  case Mul extends Ops(17, OpsClass.BinaryOps)
+  case FMul extends Ops(18, OpsClass.BinaryOps)
+  case UDiv extends Ops(19, OpsClass.BinaryOps)
+  case SDiv extends Ops(20, OpsClass.BinaryOps)
+  case FDiv extends Ops(21, OpsClass.BinaryOps)
+  case URem extends Ops(22, OpsClass.BinaryOps)
+  case SRem extends Ops(23, OpsClass.BinaryOps)
+  case FRem extends Ops(24, OpsClass.BinaryOps)
+  case Shl extends Ops(25, OpsClass.BinaryOps)
+  case LShr extends Ops(26, OpsClass.BinaryOps)
+  case AShr extends Ops(27, OpsClass.BinaryOps)
+  case And extends Ops(28, OpsClass.BinaryOps)
+  case Or extends Ops(29, OpsClass.BinaryOps)
+  case Xor extends Ops(30, OpsClass.BinaryOps)
+  case Alloca extends Ops(31, OpsClass.MemoryOps)
+  case Load extends Ops(32, OpsClass.MemoryOps)
+  case Store extends Ops(33, OpsClass.MemoryOps)
+  case GetElementPtr extends Ops(34, OpsClass.MemoryOps)
+  case Fence extends Ops(35, OpsClass.MemoryOps)
+  case AtomicCmpXchg extends Ops(36, OpsClass.MemoryOps)
+  case AtomicRMW extends Ops(37, OpsClass.MemoryOps)
+  case Trunc extends Ops(38, OpsClass.CastOps)
+  case ZExt extends Ops(39, OpsClass.CastOps)
+  case SExt extends Ops(40, OpsClass.CastOps)
+  case FPToUI extends Ops(41, OpsClass.CastOps)
+  case FPToSI extends Ops(42, OpsClass.CastOps)
+  case UIToFP extends Ops(43, OpsClass.CastOps)
+  case SIToFP extends Ops(44, OpsClass.CastOps)
+  case FPTrunc extends Ops(45, OpsClass.CastOps)
+  case FPExt extends Ops(46, OpsClass.CastOps)
+  case PtrToInt extends Ops(47, OpsClass.CastOps)
+  case IntToPtr extends Ops(48, OpsClass.CastOps)
+  case BitCast extends Ops(49, OpsClass.CastOps)
+  case AddrSpaceCast extends Ops(50, OpsClass.CastOps)
+  case CleanupPad extends Ops(51, OpsClass.FuncletPadOps)
+  case CatchPad extends Ops(52, OpsClass.FuncletPadOps)
+  case ICmp extends Ops(53, OpsClass.OtherOps)
+  case FCmp extends Ops(54, OpsClass.OtherOps)
+  case PHI extends Ops(55, OpsClass.OtherOps)
+  case Call extends Ops(56, OpsClass.OtherOps)
+  case Select extends Ops(57, OpsClass.OtherOps)
+  case UserOp1 extends Ops(58, OpsClass.OtherOps)
+  case UserOp2 extends Ops(59, OpsClass.OtherOps)
+  case VAArg extends Ops(60, OpsClass.OtherOps)
+  case ExtractElement extends Ops(61, OpsClass.OtherOps)
+  case InsertElement extends Ops(62, OpsClass.OtherOps)
+  case ShuffleVector extends Ops(63, OpsClass.OtherOps)
+  case ExtractValue extends Ops(64, OpsClass.OtherOps)
+  case InsertValue extends Ops(65, OpsClass.OtherOps)
+  case LandingPad extends Ops(66, OpsClass.OtherOps)
+}
+
+
+class Instruction(val ftype: FType, val itype: Int, val use: Use, val numOps: Int, val insertAtEnd: BasicBlock) extends Value(ftype) {
 }
