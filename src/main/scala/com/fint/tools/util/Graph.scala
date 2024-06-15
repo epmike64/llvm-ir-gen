@@ -7,7 +7,7 @@ trait NodeData[D] {
   def name: String
 }
 
-class Node[D] private[Node] (val data: NodeData[D]) {
+class Node[D] private(val data: NodeData[D]) {
   private val chldEdges = mutable.Map[String, Node[D]]()
   private val prntEdges = mutable.Map[String, Node[D]]()
 

@@ -1,5 +1,6 @@
 package com.fint.tools.llvmir
 
-class IRBuilder {
+trait IRBuilder(val llvmContext: LLVMContext) {
 
+  def setInsertPoint(bb: BasicBlock): Unit
 }
