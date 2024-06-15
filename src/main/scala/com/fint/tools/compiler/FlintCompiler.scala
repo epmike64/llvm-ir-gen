@@ -1,11 +1,11 @@
 package com.fint.tools.compiler
 
 import com.fint.tools.llvmir.LLVMContext
-import com.fint.tools.llvmir.Module
+import com.fint.tools.llvmir.FModule
 
 class FlintCompiler {
-  val llvmContext = new LLVMContext()
-  //val llvmModule = Module.create(llvmContext, "flint")
+  private val llvmContext = LLVMContext()
+  private val llvmModule = FModule(llvmContext, "m-001", "Summer.flint")
 
 
 
