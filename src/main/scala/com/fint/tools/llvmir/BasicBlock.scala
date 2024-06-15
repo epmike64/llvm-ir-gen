@@ -9,6 +9,6 @@ object BasicBlock {
   }
 }
 
-class BasicBlock private(val blockLabel:String, val parent: Function, val insertBefore: BasicBlock) extends Value(TypeID.FlintBasicBlockTyID) {
+class BasicBlock private(val blockLabel:String, val parent: Function, val insertBefore: BasicBlock) extends Value(Type.FlintBasicBlockTyID) {
   val instructions = ArrayBuffer[Instruction]()
 }

@@ -1,8 +1,6 @@
 package com.fint.tools.llvmir
 
-import scala.collection.mutable.ArrayBuffer
-
-enum TypeID:
+enum Type:
   // PrimitiveTypes
   case HalfTyID  ///< 16-bit floating point type
   case BFloatTyID  ///< 16-bit floating point type (7-bit significand)
@@ -27,41 +25,3 @@ enum TypeID:
   case ArrayTyID ///< Arrays
   case FixedVectorTyID ///< Fixed width SIMD vector type
   case ScalableVectorTyID ///< Scalable SIMD vector type
-
-/*
-https://llvm.org/doxygen/classllvm_1_1Value.html
- */
-
-trait Use
-
-trait PHINode
-trait MetaData
-
-class Value(typeID: TypeID, val name: String = ""){}
-class User(typeID: TypeID) extends Value(typeID){}
-
-class Instruction(val typeID: TypeID) extends User(typeID) {
-  val operands = ArrayBuffer[Value]()
-}
-
-class Argument(val typeID: TypeID) extends Value(typeID) {
-}
-//class BasicBlock extends Value(TypeID.LabelTyID) {
-//  val instructions = ArrayBuffer[Instruction]()
-//}
-
-class Constant(typeID: TypeID) extends User(typeID) {
-}
-
-class GlobalValue(typeID: TypeID) extends Constant(typeID)
-class GlobalObject(typeID: TypeID) extends GlobalValue(typeID) {
-  val initializer = ArrayBuffer[Constant]()
-}
-class GlobalVariable extends GlobalObject(TypeID.PointerTyID) {
-}
-
-
-
-
-
-
