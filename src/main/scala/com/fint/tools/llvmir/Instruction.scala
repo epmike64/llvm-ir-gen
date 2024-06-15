@@ -168,6 +168,15 @@ enum FInstrId(val opcode: Int, opsClass: OpsClass) {
   case LandingPad extends FInstrId(66, OpsClass.OtherOps)
 }
 
+object Instruction {
+  def apply(typeId: FTypeId, instrId: FInstrId, use: Option[Use], numOps: Int, insertAtEnd: BasicBlock): Unit = {
+    
+  }
+  
+  def apply(typeId: FTypeId, instrId: FInstrId, use: Use, numOps: Int, insertBefore: Instruction): Unit = {
+    
+  }
+}
 
-class Instruction(val typeId: FTypeId, val instrId: FInstrId, val use: Use, val numOps: Int, val insertAtEnd: BasicBlock) extends Value(typeId) {
+class Instruction(val typeId: FTypeId, val instrId: FInstrId, val use: Option[Use], val numOps: Int, val insertAtEnd: BasicBlock) extends User(typeId, use, numOps) {
 }

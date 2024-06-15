@@ -1,9 +1,12 @@
 package com.fint.tools.llvmir
 
-class Value(typeId: FTypeId, val name: String = "") {}
-
-class Constant(typeId: FTypeId) extends Value(typeId) {
+class Value(val typeId: FTypeId, use: Option[Use], val name: String = "") {
+  val uses: List[Use] = List()
 }
+
+class Constant(typeId: FTypeId) extends Value(typeId, None) {
+}
+
 class BlockAddress extends Constant(FTypeId.FBlockAddressTyID) {
 }
 
