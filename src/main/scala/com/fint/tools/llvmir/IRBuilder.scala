@@ -7,5 +7,5 @@ trait IRBuilder(val llvmContext: LLVMContext) {
   def createFSub(lhs: Value, rhs: Value, name: String = ""): Value
   def createFMul(lhs: Value, rhs: Value, name: String = ""): Value
   def createFCmpULT(lhs: Value, rhs: Value, name: String = ""): Value
-  def CreateUIToFP(value: Value, destType: FType, name: String = ""): Value
+  def CreateUIToFP(value: Value, destType: FTypeId, name: String = ""): Value
 }

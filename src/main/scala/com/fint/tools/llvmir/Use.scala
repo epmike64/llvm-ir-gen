@@ -1,7 +1,7 @@
 package com.fint.tools.llvmir
 
 
-class User extends Value(FType.FUserTyID) {
+class User extends Value(FTypeId.FUserTyID) {
   val uses: List[Use] = List()
 }
 

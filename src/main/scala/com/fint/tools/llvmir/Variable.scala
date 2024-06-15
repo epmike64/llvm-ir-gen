@@ -1,13 +1,13 @@
 package com.fint.tools.llvmir
 
-class Value(ftype: FType, val name: String = "") {}
+class Value(typeId: FTypeId, val name: String = "") {}
 
-class Constant(ftype: FType) extends Value(ftype) {
+class Constant(typeId: FTypeId) extends Value(typeId) {
 }
-class BlockAddress extends Constant(FType.FBlockAddressTyID) {
+class BlockAddress extends Constant(FTypeId.FBlockAddressTyID) {
 }
 
-class GlobalValue(ftype: FType) extends Constant(ftype)
-class GlobalObject(ftype: FType) extends GlobalValue(ftype)
-class GlobalVariable extends GlobalObject(FType.PointerTyID) {
+class GlobalValue(typeId: FTypeId) extends Constant(typeId)
+class GlobalObject(typeId: FTypeId) extends GlobalValue(typeId)
+class GlobalVariable extends GlobalObject(FTypeId.PointerTyID) {
 }

@@ -1,6 +1,6 @@
 package com.fint.tools.llvmir
 
-enum FType:
+enum FTypeId:
   // PrimitiveTypes
   case HalfTyID  ///< 16-bit floating point type
   case BFloatTyID  ///< 16-bit floating point type (7-bit significand)
@@ -10,11 +10,12 @@ enum FType:
   case FP128TyID ///< 128-bit floating point type (112-bit significand)
   case PPC_FP128TyID ///< 128-bit floating point type (two 64-bits, PowerPC)
   case VoidTyID ///< type with no size
-  
+
   case FUserTyID ///< A user type (structure... see StructType)
   case FBasicBlockTyID ///< BasicBlock
   case FBlockAddressTyID ///< BlockAddress
-  
+  case FMetaDataTyID
+
   case LabelTyID ///< Labels
   case MetadataTyID  ///< Metadata
   case X86_MMXTyID ///< MMX vectors (64 bits, X86 specific)

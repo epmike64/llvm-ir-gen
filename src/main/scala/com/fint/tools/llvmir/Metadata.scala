@@ -2,5 +2,6 @@ package com.fint.tools.llvmir
 
 
 
-trait PHINode
-trait MetaData
+class MetaData extends Value(FTypeId.FMetaDataTyID) {
+}
+
