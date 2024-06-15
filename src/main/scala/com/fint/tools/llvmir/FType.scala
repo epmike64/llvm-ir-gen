@@ -10,7 +10,8 @@ enum FType:
   case FP128TyID ///< 128-bit floating point type (112-bit significand)
   case PPC_FP128TyID ///< 128-bit floating point type (two 64-bits, PowerPC)
   case VoidTyID ///< type with no size
-  case FlintBasicBlockTyID ///< BasicBlock
+  case FBasicBlockTyID ///< BasicBlock
+  case FBlockAddressTyID ///< BlockAddress
   case LabelTyID ///< Labels
   case MetadataTyID  ///< Metadata
   case X86_MMXTyID ///< MMX vectors (64 bits, X86 specific)

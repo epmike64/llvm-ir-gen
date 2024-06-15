@@ -2,9 +2,9 @@ package com.fint.tools.llvmir
 
 class Value(ftype: FType, val name: String = "") {}
 
-class User(ftype: FType) extends Value(ftype) {}
-
-class Constant(ftype: FType) extends User(ftype) {
+class Constant(ftype: FType) extends Value(ftype) {
+}
+class BlockAddress extends Constant(FType.FBlockAddressTyID) {
 }
 
 class GlobalValue(ftype: FType) extends Constant(ftype)

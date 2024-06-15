@@ -2,13 +2,7 @@ package com.fint.tools.llvmir
 
 import scala.collection.mutable.ArrayBuffer
 
-object BasicBlock {
 
-  def create(blockLabel:String, parent: Function = null, insertBefore: BasicBlock = null) = {
-    new BasicBlock(blockLabel, parent, insertBefore)
-  }
-}
-
-class BasicBlock private(val blockLabel:String, val parent: Function, val insertBefore: BasicBlock) extends Value(FType.FlintBasicBlockTyID) {
-  val instructions = ArrayBuffer[Instruction]()
+class BasicBlock (val llvmContext: LLVMContext, val blockLabel:String, val parent: Function, val insertBefore: BasicBlock) extends Value(FType.FBasicBlockTyID) {
+  private val instructions = ArrayBuffer[Instruction]()
 }
